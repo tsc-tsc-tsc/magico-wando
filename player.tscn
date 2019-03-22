@@ -10,9 +10,13 @@ height = 0.303898
 
 [sub_resource type="Environment" id=2]
 background_mode = 1
-background_color = Color( 0.243137, 0.721569, 1, 1 )
-background_energy = 2.2
-ambient_light_color = Color( 0.933333, 0.847059, 0.768627, 1 )
+background_color = Color( 0.243137, 0.866667, 0.0666667, 1 )
+background_energy = 2.64
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 1.18
+fog_color = Color( 0.67451, 0.815686, 0.376471, 1 )
+fog_sun_amount = 0.27
+fog_depth_curve = 0.378929
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 3 )
@@ -25,7 +29,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.
 shape = SubResource( 1 )
 
 [node name="Spatial" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( -0.778356, 0.0920816, 0.621033, 0.120111, -0.949074, 0.291259, 0.616226, 0.301296, 0.727658, 4.51967, 7.17991, 10 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
@@ -33,7 +36,6 @@ transform = Transform( -1, 8.74228e-008, 0, -8.74228e-008, -1, 0, 0, 0, 1, 0, 0,
 environment = SubResource( 2 )
 
 [node name="Graphics" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0, 0 )
 
 [node name="Cone" parent="Graphics/Armature/Skeleton" index="0"]

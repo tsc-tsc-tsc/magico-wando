@@ -16,14 +16,16 @@ var y_velo = 0
 func _ready():
 	anim.get_animation("walk").set_loop(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		cam.rotation_degrees.x -= event.relative.y * V_LOOK_SENS
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 		rotation_degrees.y -= event.relative.x * H_LOOK_SENS
-
+	pass
 func _physics_process(delta):
+	
 	var move_vec = Vector3()
 	if Input.is_action_pressed("up"):
 		move_vec.z -= 1
@@ -58,9 +60,18 @@ func _physics_process(delta):
 		else:
 			play_anim("walk")
 	
-	#var jumpblock = 
+	pass
+
+
 
 func play_anim(name):
 	if anim.current_animation == name:
 		return
 	anim.play(name)
+	pass
+	
+func _on_Jumper_body_entered(body):
+	if body is KinematicBody:
+		print("nice")
+		y_velo = JUMP_FORCE * 4
+	pass # Replace with function body.
