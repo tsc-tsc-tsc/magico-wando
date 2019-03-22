@@ -57,6 +57,8 @@ func _physics_process(delta):
 			play_anim("idle")
 		else:
 			play_anim("walk")
+	
+	#var jumpblock = 
 
 func play_anim(name):
 	if anim.current_animation == name:
