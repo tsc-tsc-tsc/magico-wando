@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="popup" type="Node2D"]
+
+[node name="PopupDialog" type="PopupDialog" parent="."]
+margin_left = 138.902
+margin_top = 82.0
+margin_right = 472.902
+margin_bottom = 228.0
+
+[node name="Label" type="Label" parent="PopupDialog"]
+margin_left = 148.739
+margin_top = 52.9409
+margin_right = 188.739
+margin_bottom = 66.9409
+text = "nigger"
+
