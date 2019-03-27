@@ -1,9 +1,9 @@
 extends KinematicBody
 
-const MOVE_SPEED = 6
-const JUMP_FORCE = 13
+var JUMP_FORCE = 13
 const GRAVITY = 0.60
 const MAX_FALL_SPEED = 30
+var MOVE_SPEED = 6
 
 const H_LOOK_SENS = 0.1
 const V_LOOK_SENS = 0.0
@@ -19,12 +19,20 @@ func _ready():
 	pass
 
 func _input(event):
+	
+	
 	if event is InputEventMouseMotion:
 		cam.rotation_degrees.x -= event.relative.y * V_LOOK_SENS
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 		rotation_degrees.y -= event.relative.x * H_LOOK_SENS
 	pass
 func _physics_process(delta):
+	if Input.is_action_pressed("shift"):
+		MOVE_SPEED = 8
+		JUMP_FORCE = 14
+	else:
+		MOVE_SPEED = 6
+		JUMP_FORCE = 13
 	
 	var move_vec = Vector3()
 	if Input.is_action_pressed("up"):
@@ -74,4 +82,5 @@ func _on_Jumper_body_entered(body):
 	if body is KinematicBody:
 		print("nice")
 		y_velo = JUMP_FORCE * 4
+	
 	pass # Replace with function body.

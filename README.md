@@ -7,4 +7,7 @@
 textures added
 jumpo platform
 
-ON BRANCH DIALOGUE
+0.021
+ON BRANCH SECRETS
+	Opacity system for "caves" and roofs
+	cosmetic changes
