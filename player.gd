@@ -1,17 +1,17 @@
 extends KinematicBody
 
-var JUMP_FORCE = 13
-const GRAVITY = 0.60
-const MAX_FALL_SPEED = 30
-var MOVE_SPEED = 6
+const GRAVITY: float = 0.60
+const MAX_FALL_SPEED: int = 27
+const H_LOOK_SENS: float = 0.1
+#const V_LOOK_SENS: float = 0.1
 
-const H_LOOK_SENS = 0.1
-const V_LOOK_SENS = 0.0
-
-onready var cam = get_node("Spatial/Camera")
-onready var anim = get_node("Graphics/AnimationPlayer")
-
+var jump_force = 13
+var move_speed = 6
 var y_velo = 0
+
+onready var cam : Camera = get_node("Spatial/Camera")
+onready var anim: AnimationPlayer = get_node("Graphics/AnimationPlayer")
+
 
 func _ready():
 	anim.get_animation("walk").set_loop(true)
@@ -22,39 +22,41 @@ func _input(event):
 	
 	
 	if event is InputEventMouseMotion:
-		cam.rotation_degrees.x -= event.relative.y * V_LOOK_SENS
+		#cam.rotation_degrees.x -= event.relative.y * V_LOOK_SENS
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 		rotation_degrees.y -= event.relative.x * H_LOOK_SENS
 	pass
-func _physics_process(delta):
-	if Input.is_action_pressed("shift"):
-		MOVE_SPEED = 8
-		JUMP_FORCE = 14
+
+
+func _move_player():
+	if Input.is_action_pressed("MOVE_RUN"):
+		move_speed = 8
+		jump_force = 14
 	else:
-		MOVE_SPEED = 6
-		JUMP_FORCE = 13
+		move_speed = 6
+		jump_force = 13
 	
 	var move_vec = Vector3()
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("MOVE_FORWARDS"):
 		move_vec.z -= 1
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("MOVE_BACKWARDS"):
 		move_vec.z += 1
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("MOVE_RIGHT"):
 		move_vec.x += 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("MOVE_LEFT"):
 		move_vec.x -= 1
 	move_vec = move_vec.normalized()
 	move_vec = move_vec.rotated(Vector3(0, 1, 0), rotation.y)
-	move_vec *= MOVE_SPEED
+	move_vec *= move_speed
 	move_vec.y = y_velo
 	move_and_slide(move_vec, Vector3(0, 1, 0))
 	
 	var grounded = is_on_floor()
 	y_velo -= GRAVITY
 	var just_jumped = false
-	if grounded and Input.is_action_just_pressed("jump"):
+	if grounded and Input.is_action_just_pressed("MOVE_JUMP"):
 		just_jumped = true
-		y_velo = JUMP_FORCE
+		y_velo = jump_force
 	if grounded and y_velo <= 0:
 		y_velo = -0.1
 	if y_velo < -MAX_FALL_SPEED:
@@ -67,8 +69,13 @@ func _physics_process(delta):
 			play_anim("idle")
 		else:
 			play_anim("walk")
-	
-	pass
+
+
+
+
+func _physics_process(delta):
+	_move_player()
+
 
 
 
@@ -76,11 +83,25 @@ func play_anim(name):
 	if anim.current_animation == name:
 		return
 	anim.play(name)
-	pass
-	
+
+
+######connections
+
+
 func _on_Jumper_body_entered(body):
 	if body is KinematicBody:
-		print("nice")
-		y_velo = JUMP_FORCE * 4
-	
-	pass # Replace with function body.
+		y_velo = jump_force * 4
+
+
+
+
+func _on_trangle_body_entered(body):
+	if body is KinematicBody:
+		get_node("../pseudodia").show()
+
+
+
+func _on_trangle_body_exited(body):
+	if body is KinematicBody:
+		get_node("../pseudodia").hide()
+

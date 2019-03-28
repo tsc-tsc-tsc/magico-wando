@@ -11,3 +11,9 @@ jumpo platform
 ON BRANCH SECRETS
 	Opacity system for "caves" and roofs
 	cosmetic changes
+	
+0.22
+ON BRANCH MASTER merge
+code reorganized
+other minor changes
+
