@@ -23,7 +23,12 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/borderless=true
+window/size/width=720
+window/size/height=480
+window/size/resizable=false
+window/per_pixel_transparency/allowed=true
+window/per_pixel_transparency/enabled=true
+window/stretch/shrink=2.3
 
 [input]
 

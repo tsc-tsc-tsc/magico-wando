@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://polycat.dae" type="PackedScene" id=2]
-[ext_resource path="res://tumblr_inline_mrquf7NnMg1qz4rgp.png" type="Texture" id=3]
+[ext_resource path="res://runnerandjumper.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.530759
@@ -28,9 +27,6 @@ fog_depth_curve = 0.176777
 ss_reflections_fade_in = 1.00908
 dof_blur_near_distance = 0.18
 
-[sub_resource type="SpatialMaterial" id=4]
-albedo_texture = ExtResource( 3 )
-
 [node name="player" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -42,7 +38,7 @@ shape = SubResource( 1 )
 transform = Transform( -0.778356, 0.0920816, 0.621033, 0.120111, -0.949074, 0.291259, 0.616226, 0.301296, 0.727658, 4.51967, 7.17991, 10 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
-transform = Transform( -1, 8.74228e-008, 0, -8.74228e-008, -1, 0, 0, 0, 1, 0, 0, 5 )
+transform = Transform( -0.88796, 0.0302721, 0.458924, -0.0928896, -0.989073, -0.114487, 0.450444, -0.144289, 0.881068, 3.30896, 0.32501, -3.75768 )
 environment = SubResource( 3 )
 
 [node name="RayCast" type="RayCast" parent="Spatial/Camera"]
@@ -51,12 +47,7 @@ enabled = true
 exclude_parent = false
 cast_to = Vector3( 17, -1, 0 )
 
-[node name="Graphics" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0, 0 )
-
-[node name="Cone" parent="Graphics/Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, -7.10543e-015, 0, 1, 0, 7.10543e-015, 0, 1, 0, 0, 0 )
-material/0 = SubResource( 4 )
-
-
-[editable path="Graphics"]
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928651, 0 )
+pixel_size = 0.05
+texture = ExtResource( 2 )

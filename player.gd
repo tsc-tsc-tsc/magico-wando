@@ -10,11 +10,11 @@ var move_speed = 6
 var y_velo = 0
 
 onready var cam : Camera = get_node("Spatial/Camera")
-onready var anim: AnimationPlayer = get_node("Graphics/AnimationPlayer")
+#onready var anim: AnimationPlayer = get_node("Graphics/AnimationPlayer")
 
 
 func _ready():
-	anim.get_animation("walk").set_loop(true)
+	#anim.get_animation("walk").set_loop(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	pass
 
@@ -62,13 +62,13 @@ func _move_player():
 	if y_velo < -MAX_FALL_SPEED:
 		y_velo = -MAX_FALL_SPEED
 	
-	if just_jumped:
-		play_anim("jump")
-	elif grounded:
-		if move_vec.x == 0 and move_vec.z == 0:
-			play_anim("idle")
-		else:
-			play_anim("walk")
+	#if just_jumped:
+	#	play_anim("jump")
+	#elif grounded:
+	#	if move_vec.x == 0 and move_vec.z == 0:
+	#		play_anim("idle")
+	#	else:
+	#		play_anim("walk")
 
 
 
@@ -79,10 +79,10 @@ func _physics_process(delta):
 
 
 
-func play_anim(name):
-	if anim.current_animation == name:
-		return
-	anim.play(name)
+#func play_anim(name):
+#	if anim.current_animation == name:
+#		return
+#	anim.play(name)
 
 
 ######connections

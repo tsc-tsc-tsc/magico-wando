@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/jim.png-50987be84012351238d03a80fda48fba.s3tc.stex"
-path.etc2="res://.import/jim.png-50987be84012351238d03a80fda48fba.etc2.stex"
+path.s3tc="res://.import/blossom.png-a0a8b4ded44c51b51fc73ffc90093b46.s3tc.stex"
+path.etc2="res://.import/blossom.png-a0a8b4ded44c51b51fc73ffc90093b46.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://jim.png"
-dest_files=[ "res://.import/jim.png-50987be84012351238d03a80fda48fba.s3tc.stex", "res://.import/jim.png-50987be84012351238d03a80fda48fba.etc2.stex" ]
+source_file="res://blossom.png"
+dest_files=[ "res://.import/blossom.png-a0a8b4ded44c51b51fc73ffc90093b46.s3tc.stex", "res://.import/blossom.png-a0a8b4ded44c51b51fc73ffc90093b46.etc2.stex" ]
 
 [params]
 
@@ -22,10 +22,10 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=false
-flags/mipmaps=false
+flags/filter=true
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
